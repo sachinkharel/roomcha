@@ -10,11 +10,11 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body class="bg-white text-gray-800">
@@ -66,80 +66,112 @@
     </div>
 
     <!-- Minimalistic Carousel -->
+    <div class="relative max-w-6xl mx-auto py-12 px-4">
+      <div class="overflow-hidden relative rounded-lg">
+        <div
+          class="flex transition-transform duration-500 ease-in-out"
+          id="carousel"
+        >
+          <div class="w-full flex-shrink-0">
+            <div class="relative aspect-[16/9]">
+              <img
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4"
+                alt="Mountain landscape"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4"
+              >
+                <h2 class="text-white text-lg font-semibold">Mountain Views</h2>
+              </div>
+            </div>
+          </div>
+          <div class="w-full flex-shrink-0">
+            <div class="relative aspect-[16/9]">
+              <img
+                src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05"
+                alt="Forest vista"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4"
+              >
+                <h2 class="text-white text-lg font-semibold">
+                  Forest Serenity
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div class="w-full flex-shrink-0">
+            <div class="relative aspect-[16/9]">
+              <img
+                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e"
+                alt="Sunlit forest"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4"
+              >
+                <h2 class="text-white text-lg font-semibold">Natural Beauty</h2>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <!--HTML CODE-->
-    <div class="w-full relative">
-      <div class="swiper default-carousel swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div
-              class="bg-blue-50 rounded-2xl h-96 flex justify-center items-center"
-            >
-              <span class="text-3xl font-semibold text-blue-500">Slide 1 </span>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div
-              class="bg-blue-50 rounded-2xl h-96 flex justify-center items-center"
-            >
-              <span class="text-3xl font-semibold text-blue-500">Slide 2 </span>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div
-              class="bg-blue-50 rounded-2xl h-96 flex justify-center items-center"
-            >
-              <span class="text-3xl font-semibold text-blue-500">Slide 3 </span>
-            </div>
-          </div>
-        </div>
-        <div class="flex items-center gap-8 lg:justify-start justify-center">
-          <button
-            id="slider-button-left"
-            class="swiper-button-prev group !p-2 flex justify-center items-center border border-solid border-blue-500 !w-12 !h-12 transition-all duration-500 rounded-full !top-2/4 !-translate-y-8 !left-5 hover:bg-blue-500"
-            data-carousel-prev
+        <button
+          class="absolute left-4 top-1/2 -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 shadow"
+          onclick="moveSlide(-1)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            class="w-5 h-5"
           >
-            <svg
-              class="h-5 w-5 text-blue-500 group-hover:text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-            >
-              <path
-                d="M10.0002 11.9999L6 7.99971L10.0025 3.99719"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-          <button
-            id="slider-button-right"
-            class="swiper-button-next group !p-2 flex justify-center items-center border border-solid border-blue-500 !w-12 !h-12 transition-all duration-500 rounded-full !top-2/4 !-translate-y-8 !right-5 hover:bg-blue-500"
-            data-carousel-next
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            ></path>
+          </svg>
+        </button>
+
+        <button
+          class="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 shadow"
+          onclick="moveSlide(1)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            class="w-5 h-5"
           >
-            <svg
-              class="h-5 w-5 text-blue-500 group-hover:text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-            >
-              <path
-                d="M5.99984 4.00012L10 8.00029L5.99748 12.0028"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+        </button>
+
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+          <button
+            class="dot w-2 h-2 rounded-full bg-gray-300 hover:bg-blue-500 transition-all"
+            onclick="goToSlide(0)"
+          ></button>
+          <button
+            class="dot w-2 h-2 rounded-full bg-gray-300 hover:bg-blue-500 transition-all"
+            onclick="goToSlide(1)"
+          ></button>
+          <button
+            class="dot w-2 h-2 rounded-full bg-gray-300 hover:bg-blue-500 transition-all"
+            onclick="goToSlide(2)"
+          ></button>
         </div>
-        <div class="swiper-pagination"></div>
       </div>
     </div>
 
@@ -220,17 +252,30 @@
         mobileMenu.classList.toggle("hidden");
       });
 
-      var swiper = new Swiper(".default-carousel", {
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
+      let currentSlide = 0;
+      const slides = document.querySelectorAll("#carousel > div").length;
+      const carousel = document.getElementById("carousel");
+      const dots = document.querySelectorAll(".dot");
+
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("bg-blue-500", index === currentSlide);
+          dot.classList.toggle("bg-gray-300", index !== currentSlide);
+        });
+      }
+
+      function moveSlide(direction) {
+        currentSlide = (currentSlide + direction + slides) % slides;
+        updateCarousel();
+      }
+
+      function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateCarousel();
+      }
+      updateCarousel();
+      setInterval(() => moveSlide(1), 5000);
     </script>
   </body>
 </html>

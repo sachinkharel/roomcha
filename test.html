@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Image Carousel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4A90E2" /* Change to your desired color */,
+              accent: "#F5A623" /* Change to your desired color */,
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="relative max-w-6xl mx-auto py-12 px-4">
+      <div class="overflow-hidden relative rounded-lg">
+        <div
+          class="flex transition-transform duration-500 ease-in-out"
+          id="carousel"
+        >
+          <div class="w-full flex-shrink-0">
+            <div class="relative aspect-[16/9]">
+              <img
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4"
+                alt="Mountain landscape"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6"
+              >
+                <h2 class="text-primary text-2xl font-bold">Mountain Views</h2>
+                <p class="text-white mt-2">
+                  Experience breathtaking mountain landscapes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="w-full flex-shrink-0">
+            <div class="relative aspect-[16/9]">
+              <img
+                src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05"
+                alt="Forest vista"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6"
+              >
+                <h2 class="text-primary text-2xl font-bold">Forest Serenity</h2>
+                <p class="text-white mt-2">
+                  Discover peaceful forest landscapes
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="w-full flex-shrink-0">
+            <div class="relative aspect-[16/9]">
+              <img
+                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e"
+                alt="Sunlit forest"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6"
+              >
+                <h2 class="text-primary text-2xl font-bold">Natural Beauty</h2>
+                <p class="text-white mt-2">
+                  Immerse yourself in natural wonders
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          aria-label="Previous slide"
+          class="absolute left-4 top-1/2 -translate-y-1/2 bg-accent/80 hover:bg-accent text-white rounded-full p-2 backdrop-blur-sm transition-all"
+          onclick="moveSlide(-1)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+
+        <button
+          aria-label="Next slide"
+          class="absolute right-4 top-1/2 -translate-y-1/2 bg-accent/80 hover:bg-accent text-white rounded-full p-2 backdrop-blur-sm transition-all"
+          onclick="moveSlide(1)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </button>
+
+        <div
+          class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2"
+          id="carousel-dots"
+        >
+          <button
+            aria-label="Go to slide 1"
+            class="dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all"
+            onclick="goToSlide(0)"
+          ></button>
+          <button
+            aria-label="Go to slide 2"
+            class="dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all"
+            onclick="goToSlide(1)"
+          ></button>
+          <button
+            aria-label="Go to slide 3"
+            class="dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-all"
+            onclick="goToSlide(2)"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll("#carousel > div").length;
+      const carousel = document.getElementById("carousel");
+      const dots = document.querySelectorAll(".dot");
+
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("bg-accent", index === currentSlide);
+          dot.classList.toggle("bg-white/60", index !== currentSlide);
+        });
+      }
+
+      function moveSlide(direction) {
+        currentSlide = (currentSlide + direction + slides) % slides;
+        updateCarousel();
+      }
+
+      function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateCarousel();
+      }
+
+      setInterval(() => moveSlide(1), 5000);
+    </script>
+  </body>
+</html>
